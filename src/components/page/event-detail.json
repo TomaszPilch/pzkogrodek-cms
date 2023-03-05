@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_page_event_details",
+  "info": {
+    "displayName": "Event detail"
+  },
+  "options": {},
+  "attributes": {
+    "event": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::event.event"
+    }
+  }
+}
