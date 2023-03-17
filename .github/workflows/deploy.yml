@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    tags:
+      - v*.*.*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: docker/login-action@v2
+      with:
+        registry: https://europe-central2-docker.pkg.dev
+        username: _json_key_base64
+        password: '${{ secrets.GCLOUD_API_KEYFILE }}'
+    - run: docker build -t pzkogrodek-cms --build-arg NODE_ENV=production .
+    - run: docker tag pzkogrodek-cms europe-central2-docker.pkg.dev/pzko-grodek/pzkogrodek-cms:$GITHUB_REF_NAME
+    - run: docker push europe-central2-docker.pkg.dev/pzko-grodek/pzkogrodek-cms:$GITHUB_REF_NAME
+
+
