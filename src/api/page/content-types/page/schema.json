@@ -1,11 +1,10 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "pages",
   "info": {
     "singularName": "page",
     "pluralName": "pages",
-    "displayName": "Page",
-    "description": ""
+    "displayName": "Page"
   },
   "options": {
     "draftAndPublish": true
@@ -16,28 +15,28 @@
       "type": "string",
       "required": true
     },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
     "description": {
       "type": "text"
     },
     "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "type": "media",
+      "multiple": false
     },
     "content": {
       "type": "dynamiczone",
       "components": [
+        "page.event-detail",
         "page.gallery",
-        "page.page",
-        "page.event-detail"
+        "page.page"
       ]
-    },
-    "slug": {
-      "type": "string",
-      "unique": true
     }
   }
 }
