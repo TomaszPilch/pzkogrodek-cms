@@ -1,7 +1,8 @@
 {
   "collectionName": "components_page_event_details",
   "info": {
-    "displayName": "Event detail"
+    "displayName": "Detail imprezy",
+    "description": ""
   },
   "options": {},
   "attributes": {

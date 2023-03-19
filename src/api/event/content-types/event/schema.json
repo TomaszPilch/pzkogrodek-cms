@@ -4,7 +4,7 @@
   "info": {
     "singularName": "event",
     "pluralName": "events",
-    "displayName": "Event",
+    "displayName": "Imprezy",
     "description": ""
   },
   "options": {
@@ -29,17 +29,22 @@
         "images"
       ]
     },
-    "content": {
-      "type": "richtext"
-    },
     "start": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "end": {
       "type": "datetime"
     },
     "description": {
       "type": "text"
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
     }
   }
 }

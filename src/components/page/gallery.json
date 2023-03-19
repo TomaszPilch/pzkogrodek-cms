@@ -1,16 +1,18 @@
 {
   "collectionName": "components_page_galleries",
   "info": {
-    "displayName": "Gallery"
+    "displayName": "Obrazki",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }
