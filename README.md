@@ -17,3 +17,9 @@ yarn start
 ```
 yarn build
 ```
+
+### HELM deploy
+
+```
+helm upgrade pzkogrodek-cms devx/strapi-cms -f ./helm/values.yaml --set image.tag=$BITBUCKET_TAG
+```

@@ -1,0 +1,122 @@
+commonLabels: {}
+
+commonAnnotations: {}
+
+namespace: 'pzkogrodek'
+
+image:
+  repository: 'europe-central2-docker.pkg.dev/tomasz-codes/pzko-grodek/pzkogrodek-cms'
+  tag: v0.1.0
+  pullPolicy: IfNotPresent
+  pullSecrets:
+    - gcr-json-key
+
+nodeEnv: "production"
+
+replicaCount: 1
+
+existingSecret: 'pzkogrodek-cms-secret'
+
+existingConfigMap: 'pzkogrodek-cms-config'
+
+# @param affinity - to enable selecting the specific node
+# find better solution in the future, but now we need this to prevent scheduling to different node than PVC
+affinity: {}
+
+## @param envVars environment variables to be set on containers
+## E.g:
+## envVars:
+##   - name: FOO
+##     value: BAR
+##
+envVars: []
+
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate: {}
+
+podLabels: {}
+
+podAnnotations: {}
+
+resources:
+  limits: {}
+  requests:
+    memory: 256Mi
+    cpu: 50m
+
+containerPorts:
+  http: "1337"
+
+podSecurityContext:
+  enabled: true
+  fsGroup: 1001
+
+containerSecurityContext:
+  enabled: true
+  runAsUser: 1001
+  runAsNonRoot: true
+
+livenessProbe:
+  enabled: false
+  httpGet:
+    path: /_health
+    port: 1337
+    scheme: 'HTTP'
+    httpHeaders: []
+  initialDelaySeconds: 120
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+readinessProbe:
+  enabled: false
+  httpGet:
+    path: /_health
+    port: 1337
+    scheme: 'HTTP'
+    httpHeaders: []
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+startupProbe:
+  enabled: false
+  httpGet:
+    path: /_health
+    port: 1337
+    scheme: 'HTTP'
+    httpHeaders: []
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+
+customLivenessProbe: {}
+customReadinessProbe: {}
+customStartupProbe: {}
+
+service:
+  type: ClusterIP
+  ports:
+    http: 80
+  targetPorts:
+    http: "1337"
+  nodePorts:
+    http: ""
+    https: ""
+  sessionAffinity: None
+  clusterIP: ""
+  loadBalancerIP: ""
+  loadBalancerSourceRanges: []
+  externalTrafficPolicy: Cluster
+  annotations: {}
+  extraPorts: []
+
+serviceAccount:
+  create: false
+  name: ""
+  automountServiceAccountToken: true
+  annotations: {}
