@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "occupancies",
+  "info": {
+    "singularName": "occupancy",
+    "pluralName": "occupancies",
+    "displayName": "Wynajem",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "private": true,
+      "required": true
+    },
+    "start": {
+      "type": "datetime",
+      "required": true
+    },
+    "end": {
+      "type": "datetime"
+    }
+  }
+}
