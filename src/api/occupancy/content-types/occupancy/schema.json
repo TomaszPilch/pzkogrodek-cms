@@ -31,6 +31,10 @@
     "description": {
       "type": "text",
       "private": true
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
