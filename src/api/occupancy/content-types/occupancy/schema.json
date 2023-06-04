@@ -23,6 +23,14 @@
     },
     "end": {
       "type": "datetime"
+    },
+    "private": {
+      "type": "boolean",
+      "default": true
+    },
+    "description": {
+      "type": "text",
+      "private": true
     }
   }
 }
