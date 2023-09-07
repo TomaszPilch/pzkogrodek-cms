@@ -1,7 +1,7 @@
 {
   "name": "pzkogrodek-cms",
   "private": true,
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
@@ -12,9 +12,9 @@
   "devDependencies": {},
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^2.0.4",
-    "@strapi/plugin-i18n": "4.10.7",
-    "@strapi/plugin-users-permissions": "4.10.7",
-    "@strapi/strapi": "4.10.7",
+    "@strapi/plugin-i18n": "4.13.3",
+    "@strapi/plugin-users-permissions": "4.13.3",
+    "@strapi/strapi": "4.13.3",
     "better-sqlite3": "8.4.0",
     "pg": "^8.11.0",
     "slugify": "^1.6.6"
