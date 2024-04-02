@@ -68,7 +68,8 @@
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "private": true
     },
     "email": {
       "type": "email",
@@ -76,7 +77,8 @@
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "private": true
     },
     "phone": {
       "type": "string",
@@ -84,7 +86,8 @@
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "private": true
     }
   }
 }

@@ -857,6 +857,7 @@ export interface ApiOccupancyOccupancy extends Schema.CollectionType {
         }
       }>
     confirmed: Attribute.Boolean &
+      Attribute.Private &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false
@@ -864,12 +865,14 @@ export interface ApiOccupancyOccupancy extends Schema.CollectionType {
       }> &
       Attribute.DefaultTo<false>
     email: Attribute.Email &
+      Attribute.Private &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false
         }
       }>
     phone: Attribute.String &
+      Attribute.Private &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false
