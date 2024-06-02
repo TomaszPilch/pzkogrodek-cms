@@ -594,6 +594,67 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   }
 }
 
+export interface ApiAktywnyEmerytAktywnyEmeryt extends Schema.CollectionType {
+  collectionName: 'aktywny_emeryts'
+  info: {
+    singularName: 'aktywny-emeryt'
+    pluralName: 'aktywny-emeryts'
+    displayName: 'Aktywny emeryt'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    page: Attribute.DynamicZone<['page.event-detail', 'page.gallery', 'page.page', 'page.youtube']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<'api::aktywny-emeryt.aktywny-emeryt', 'oneToOne', 'admin::user'> & Attribute.Private
+    updatedBy: Attribute.Relation<'api::aktywny-emeryt.aktywny-emeryt', 'oneToOne', 'admin::user'> & Attribute.Private
+    localizations: Attribute.Relation<
+      'api::aktywny-emeryt.aktywny-emeryt',
+      'oneToMany',
+      'api::aktywny-emeryt.aktywny-emeryt'
+    >
+    locale: Attribute.String
+  }
+}
+
 export interface ApiConfigConfig extends Schema.CollectionType {
   collectionName: 'configs'
   info: {
@@ -967,6 +1028,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission
       'plugin::users-permissions.role': PluginUsersPermissionsRole
       'plugin::users-permissions.user': PluginUsersPermissionsUser
+      'api::aktywny-emeryt.aktywny-emeryt': ApiAktywnyEmerytAktywnyEmeryt
       'api::config.config': ApiConfigConfig
       'api::event.event': ApiEventEvent
       'api::gallery.gallery': ApiGalleryGallery
