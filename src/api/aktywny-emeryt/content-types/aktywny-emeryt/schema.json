@@ -4,7 +4,8 @@
   "info": {
     "singularName": "aktywny-emeryt",
     "pluralName": "aktywny-emeryts",
-    "displayName": "Aktywny emeryt"
+    "displayName": "Aktywny emeryt",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -42,14 +43,15 @@
       "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
