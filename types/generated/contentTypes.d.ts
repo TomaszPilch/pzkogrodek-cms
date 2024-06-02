@@ -600,6 +600,7 @@ export interface ApiAktywnyEmerytAktywnyEmeryt extends Schema.CollectionType {
     singularName: 'aktywny-emeryt'
     pluralName: 'aktywny-emeryts'
     displayName: 'Aktywny emeryt'
+    description: ''
   }
   options: {
     draftAndPublish: false
@@ -631,6 +632,7 @@ export interface ApiAktywnyEmerytAktywnyEmeryt extends Schema.CollectionType {
         }
       }>
     image: Attribute.Media &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false
