@@ -400,6 +400,7 @@ export interface PluginContentReleasesRelease extends Schema.CollectionType {
     releasedAt: Attribute.DateTime
     scheduledAt: Attribute.DateTime
     timezone: Attribute.String
+    status: Attribute.Enumeration<['ready', 'blocked', 'failed', 'done', 'empty']> & Attribute.Required
     actions: Attribute.Relation<
       'plugin::content-releases.release',
       'oneToMany',
@@ -440,6 +441,7 @@ export interface PluginContentReleasesReleaseAction extends Schema.CollectionTyp
       'manyToOne',
       'plugin::content-releases.release'
     >
+    isEntryValid: Attribute.Boolean
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     createdBy: Attribute.Relation<'plugin::content-releases.release-action', 'oneToOne', 'admin::user'> &
@@ -631,7 +633,7 @@ export interface ApiAktywnyEmerytAktywnyEmeryt extends Schema.CollectionType {
           localized: true
         }
       }>
-    image: Attribute.Media &
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -708,7 +710,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
           localized: true
         }
       }>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false
@@ -763,6 +765,98 @@ export interface ApiEventEvent extends Schema.CollectionType {
   }
 }
 
+export interface ApiFestOutdoorGuestFestOutdoorGuest extends Schema.CollectionType {
+  collectionName: 'fest_outdoor_guests'
+  info: {
+    singularName: 'fest-outdoor-guest'
+    pluralName: 'fest-outdoor-guests'
+    displayName: 'Fest Outdoor Guests'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    start: Attribute.DateTime &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    end: Attribute.DateTime &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    content: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    role: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    showAsSnippet: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }> &
+      Attribute.DefaultTo<false>
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    publishedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<'api::fest-outdoor-guest.fest-outdoor-guest', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    updatedBy: Attribute.Relation<'api::fest-outdoor-guest.fest-outdoor-guest', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    localizations: Attribute.Relation<
+      'api::fest-outdoor-guest.fest-outdoor-guest',
+      'oneToMany',
+      'api::fest-outdoor-guest.fest-outdoor-guest'
+    >
+    locale: Attribute.String
+  }
+}
+
 export interface ApiGalleryGallery extends Schema.CollectionType {
   collectionName: 'galleries'
   info: {
@@ -793,7 +887,7 @@ export interface ApiGalleryGallery extends Schema.CollectionType {
           localized: true
         }
       }>
-    photos: Attribute.Media &
+    photos: Attribute.Media<'images' | 'videos', true> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -989,7 +1083,7 @@ export interface ApiPagePage extends Schema.CollectionType {
           localized: true
         }
       }>
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1033,6 +1127,7 @@ declare module '@strapi/types' {
       'api::aktywny-emeryt.aktywny-emeryt': ApiAktywnyEmerytAktywnyEmeryt
       'api::config.config': ApiConfigConfig
       'api::event.event': ApiEventEvent
+      'api::fest-outdoor-guest.fest-outdoor-guest': ApiFestOutdoorGuestFestOutdoorGuest
       'api::gallery.gallery': ApiGalleryGallery
       'api::member.member': ApiMemberMember
       'api::occupancy.occupancy': ApiOccupancyOccupancy

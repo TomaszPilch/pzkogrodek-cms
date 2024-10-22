@@ -1,24 +1,12 @@
 import type { Schema, Attribute } from '@strapi/strapi'
 
-export interface PageEventDetail extends Schema.Component {
-  collectionName: 'components_page_event_details'
+export interface PageYoutube extends Schema.Component {
+  collectionName: 'components_page_youtubes'
   info: {
-    displayName: 'Detail imprezy'
-    description: ''
+    displayName: 'Youtube'
   }
   attributes: {
-    event: Attribute.Relation<'page.event-detail', 'oneToOne', 'api::event.event'>
-  }
-}
-
-export interface PageGallery extends Schema.Component {
-  collectionName: 'components_page_galleries'
-  info: {
-    displayName: 'Obrazki'
-    description: ''
-  }
-  attributes: {
-    gallery: Attribute.Media
+    url: Attribute.String & Attribute.Required
   }
 }
 
@@ -39,23 +27,35 @@ export interface PagePage extends Schema.Component {
   }
 }
 
-export interface PageYoutube extends Schema.Component {
-  collectionName: 'components_page_youtubes'
+export interface PageGallery extends Schema.Component {
+  collectionName: 'components_page_galleries'
   info: {
-    displayName: 'Youtube'
+    displayName: 'Obrazki'
+    description: ''
   }
   attributes: {
-    url: Attribute.String & Attribute.Required
+    gallery: Attribute.Media<'images', true>
+  }
+}
+
+export interface PageEventDetail extends Schema.Component {
+  collectionName: 'components_page_event_details'
+  info: {
+    displayName: 'Detail imprezy'
+    description: ''
+  }
+  attributes: {
+    event: Attribute.Relation<'page.event-detail', 'oneToOne', 'api::event.event'>
   }
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'page.event-detail': PageEventDetail
-      'page.gallery': PageGallery
-      'page.page': PagePage
       'page.youtube': PageYoutube
+      'page.page': PagePage
+      'page.gallery': PageGallery
+      'page.event-detail': PageEventDetail
     }
   }
 }
