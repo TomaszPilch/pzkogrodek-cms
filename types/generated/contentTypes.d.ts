@@ -771,6 +771,7 @@ export interface ApiFestOutdoorGuestFestOutdoorGuest extends Schema.CollectionTy
     singularName: 'fest-outdoor-guest'
     pluralName: 'fest-outdoor-guests'
     displayName: 'Fest Outdoor Guests'
+    description: ''
   }
   options: {
     draftAndPublish: true
@@ -799,7 +800,7 @@ export interface ApiFestOutdoorGuestFestOutdoorGuest extends Schema.CollectionTy
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true
+          localized: false
         }
       }>
     title: Attribute.String &
