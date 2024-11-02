@@ -4,7 +4,8 @@
   "info": {
     "singularName": "fest-outdoor-guest",
     "pluralName": "fest-outdoor-guests",
-    "displayName": "Fest Outdoor Guests"
+    "displayName": "Fest Outdoor Guests",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -36,7 +37,7 @@
     "end": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "datetime",
@@ -76,17 +77,17 @@
       "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      },
-      "required": true
+      }
     },
     "showAsSnippet": {
       "pluginOptions": {
