@@ -858,6 +858,58 @@ export interface ApiFestOutdoorGuestFestOutdoorGuest extends Schema.CollectionTy
   }
 }
 
+export interface ApiFestOutdoorTicketFestOutdoorTicket extends Schema.CollectionType {
+  collectionName: 'fest_outdoor_tickets'
+  info: {
+    singularName: 'fest-outdoor-ticket'
+    pluralName: 'fest-outdoor-tickets'
+    displayName: 'Fest Outdoor Tickets'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    code: Attribute.String & Attribute.Required & Attribute.Unique
+    name: Attribute.String & Attribute.Required
+    email: Attribute.String
+    person: Attribute.String
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<'api::fest-outdoor-ticket.fest-outdoor-ticket', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    updatedBy: Attribute.Relation<'api::fest-outdoor-ticket.fest-outdoor-ticket', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+  }
+}
+
+export interface ApiFestOutdoorTicketsLogFestOutdoorTicketsLog extends Schema.CollectionType {
+  collectionName: 'fest_outdoor_tickets_logs'
+  info: {
+    singularName: 'fest-outdoor-tickets-log'
+    pluralName: 'fest-outdoor-tickets-logs'
+    displayName: 'Fest Outdoor Tickets Log'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    fest_outdoor_ticket: Attribute.Relation<
+      'api::fest-outdoor-tickets-log.fest-outdoor-tickets-log',
+      'oneToOne',
+      'api::fest-outdoor-ticket.fest-outdoor-ticket'
+    >
+    code: Attribute.String & Attribute.Required
+    scanTime: Attribute.DateTime & Attribute.Required
+    data: Attribute.JSON
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<'api::fest-outdoor-tickets-log.fest-outdoor-tickets-log', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    updatedBy: Attribute.Relation<'api::fest-outdoor-tickets-log.fest-outdoor-tickets-log', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+  }
+}
+
 export interface ApiGalleryGallery extends Schema.CollectionType {
   collectionName: 'galleries'
   info: {
@@ -1129,6 +1181,8 @@ declare module '@strapi/types' {
       'api::config.config': ApiConfigConfig
       'api::event.event': ApiEventEvent
       'api::fest-outdoor-guest.fest-outdoor-guest': ApiFestOutdoorGuestFestOutdoorGuest
+      'api::fest-outdoor-ticket.fest-outdoor-ticket': ApiFestOutdoorTicketFestOutdoorTicket
+      'api::fest-outdoor-tickets-log.fest-outdoor-tickets-log': ApiFestOutdoorTicketsLogFestOutdoorTicketsLog
       'api::gallery.gallery': ApiGalleryGallery
       'api::member.member': ApiMemberMember
       'api::occupancy.occupancy': ApiOccupancyOccupancy
