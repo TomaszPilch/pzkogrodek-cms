@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fest_outdoor_tickets_logs",
+  "info": {
+    "singularName": "fest-outdoor-tickets-log",
+    "pluralName": "fest-outdoor-tickets-logs",
+    "displayName": "Fest Outdoor Tickets Log"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fest_outdoor_ticket": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::fest-outdoor-ticket.fest-outdoor-ticket"
+    },
+    "code": {
+      "type": "string",
+      "required": true
+    },
+    "scanTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "data": {
+      "type": "json"
+    }
+  }
+}
