@@ -765,6 +765,30 @@ export interface ApiEventEvent extends Schema.CollectionType {
   }
 }
 
+export interface ApiFestOutdoorFeedbackFestOutdoorFeedback extends Schema.CollectionType {
+  collectionName: 'fest_outdoor_feedbacks'
+  info: {
+    singularName: 'fest-outdoor-feedback'
+    pluralName: 'fest-outdoor-feedbacks'
+    displayName: 'Fest Outdoor Feedback'
+    description: ''
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    name: Attribute.String
+    content: Attribute.String
+    rating: Attribute.Integer
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<'api::fest-outdoor-feedback.fest-outdoor-feedback', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    updatedBy: Attribute.Relation<'api::fest-outdoor-feedback.fest-outdoor-feedback', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+  }
+}
+
 export interface ApiFestOutdoorGuestFestOutdoorGuest extends Schema.CollectionType {
   collectionName: 'fest_outdoor_guests'
   info: {
@@ -853,6 +877,45 @@ export interface ApiFestOutdoorGuestFestOutdoorGuest extends Schema.CollectionTy
       'api::fest-outdoor-guest.fest-outdoor-guest',
       'oneToMany',
       'api::fest-outdoor-guest.fest-outdoor-guest'
+    >
+    locale: Attribute.String
+  }
+}
+
+export interface ApiFestOutdoorInfoFestOutdoorInfo extends Schema.SingleType {
+  collectionName: 'fest_outdoor_infos'
+  info: {
+    singularName: 'fest-outdoor-info'
+    pluralName: 'fest-outdoor-infos'
+    displayName: 'Fest Outdoor Info'
+    description: ''
+  }
+  options: {
+    draftAndPublish: false
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    content: Attribute.Blocks &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<'api::fest-outdoor-info.fest-outdoor-info', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    updatedBy: Attribute.Relation<'api::fest-outdoor-info.fest-outdoor-info', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    localizations: Attribute.Relation<
+      'api::fest-outdoor-info.fest-outdoor-info',
+      'oneToMany',
+      'api::fest-outdoor-info.fest-outdoor-info'
     >
     locale: Attribute.String
   }
@@ -1180,7 +1243,9 @@ declare module '@strapi/types' {
       'api::aktywny-emeryt.aktywny-emeryt': ApiAktywnyEmerytAktywnyEmeryt
       'api::config.config': ApiConfigConfig
       'api::event.event': ApiEventEvent
+      'api::fest-outdoor-feedback.fest-outdoor-feedback': ApiFestOutdoorFeedbackFestOutdoorFeedback
       'api::fest-outdoor-guest.fest-outdoor-guest': ApiFestOutdoorGuestFestOutdoorGuest
+      'api::fest-outdoor-info.fest-outdoor-info': ApiFestOutdoorInfoFestOutdoorInfo
       'api::fest-outdoor-ticket.fest-outdoor-ticket': ApiFestOutdoorTicketFestOutdoorTicket
       'api::fest-outdoor-tickets-log.fest-outdoor-tickets-log': ApiFestOutdoorTicketsLogFestOutdoorTicketsLog
       'api::gallery.gallery': ApiGalleryGallery
