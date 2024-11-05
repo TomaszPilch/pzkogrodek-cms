@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "fest_outdoor_infos",
+  "info": {
+    "singularName": "fest-outdoor-info",
+    "pluralName": "fest-outdoor-infos",
+    "displayName": "Fest Outdoor Info",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "content": {
+      "type": "blocks",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

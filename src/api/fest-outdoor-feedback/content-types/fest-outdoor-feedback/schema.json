@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fest_outdoor_feedbacks",
+  "info": {
+    "singularName": "fest-outdoor-feedback",
+    "pluralName": "fest-outdoor-feedbacks",
+    "displayName": "Fest Outdoor Feedback",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "integer"
+    }
+  }
+}
