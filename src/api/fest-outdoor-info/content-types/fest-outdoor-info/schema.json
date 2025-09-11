@@ -18,12 +18,12 @@
   "attributes": {
     "content": {
       "type": "blocks",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     }
   }
 }

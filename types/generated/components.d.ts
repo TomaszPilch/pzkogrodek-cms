@@ -1,61 +1,55 @@
-import type { Schema, Attribute } from '@strapi/strapi'
+import type { Schema, Struct } from '@strapi/strapi'
 
-export interface PageYoutube extends Schema.Component {
+export interface PageEventDetail extends Struct.ComponentSchema {
+  collectionName: 'components_page_event_details'
+  info: {
+    description: ''
+    displayName: 'Detail imprezy'
+  }
+  attributes: {
+    event: Schema.Attribute.Relation<'oneToOne', 'api::event.event'>
+  }
+}
+
+export interface PageGallery extends Struct.ComponentSchema {
+  collectionName: 'components_page_galleries'
+  info: {
+    description: ''
+    displayName: 'Obrazki'
+  }
+  attributes: {
+    gallery: Schema.Attribute.Media<'images', true>
+  }
+}
+
+export interface PagePage extends Struct.ComponentSchema {
+  collectionName: 'components_page_pages'
+  info: {
+    description: ''
+    displayName: 'Text'
+  }
+  attributes: {
+    text: Schema.Attribute.Blocks
+  }
+}
+
+export interface PageYoutube extends Struct.ComponentSchema {
   collectionName: 'components_page_youtubes'
   info: {
     displayName: 'Youtube'
   }
   attributes: {
-    url: Attribute.String & Attribute.Required
+    url: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
-export interface PagePage extends Schema.Component {
-  collectionName: 'components_page_pages'
-  info: {
-    displayName: 'Text'
-    description: ''
-  }
-  attributes: {
-    text: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'toolbar'
-        }
-      >
-  }
-}
-
-export interface PageGallery extends Schema.Component {
-  collectionName: 'components_page_galleries'
-  info: {
-    displayName: 'Obrazki'
-    description: ''
-  }
-  attributes: {
-    gallery: Attribute.Media<'images', true>
-  }
-}
-
-export interface PageEventDetail extends Schema.Component {
-  collectionName: 'components_page_event_details'
-  info: {
-    displayName: 'Detail imprezy'
-    description: ''
-  }
-  attributes: {
-    event: Attribute.Relation<'page.event-detail', 'oneToOne', 'api::event.event'>
-  }
-}
-
-declare module '@strapi/types' {
-  export module Shared {
-    export interface Components {
-      'page.youtube': PageYoutube
-      'page.page': PagePage
-      'page.gallery': PageGallery
+declare module '@strapi/strapi' {
+  export module Public {
+    export interface ComponentSchemas {
       'page.event-detail': PageEventDetail
+      'page.gallery': PageGallery
+      'page.page': PagePage
+      'page.youtube': PageYoutube
     }
   }
 }

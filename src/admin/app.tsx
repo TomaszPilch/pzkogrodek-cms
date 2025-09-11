@@ -31,10 +31,6 @@ export default {
       // 'zh-Hans',
       // 'zh',
     ],
-    translations: {
-      cs: cs,
-      pl: pl,
-    },
   },
   bootstrap() {},
 }
