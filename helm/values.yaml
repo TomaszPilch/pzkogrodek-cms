@@ -17,7 +17,7 @@ replicaCount: 1
 
 existingSecret: 'pzkogrodek-cms-secret'
 
-existingConfigMap: 'pzkogrodek-cms-config'
+existingConfigMap: 'pzkogrodek-cms-config-new'
 
 # @param affinity - to enable selecting the specific node
 # find better solution in the future, but now we need this to prevent scheduling to different node than PVC
@@ -29,7 +29,12 @@ affinity: {}
 ##   - name: FOO
 ##     value: BAR
 ##
-envVars: []
+envVars:
+  - name: ENCRYPTION_KEY
+    valueFrom:
+      secretKeyRef:
+        name: pzkogrodek-cms-secret
+        key: ENCRYPTION_KEY
 
 updateStrategy:
   type: RollingUpdate
