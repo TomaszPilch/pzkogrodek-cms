@@ -46,12 +46,7 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
+      "allowedTypes": ["images", "files", "videos", "audios"],
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -65,12 +60,7 @@
         }
       },
       "type": "dynamiczone",
-      "components": [
-        "page.event-detail",
-        "page.gallery",
-        "page.page",
-        "page.youtube"
-      ]
+      "components": ["page.event-detail", "page.gallery", "page.page", "page.youtube"]
     }
   }
 }

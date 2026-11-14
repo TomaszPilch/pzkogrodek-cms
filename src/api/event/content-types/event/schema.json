@@ -44,9 +44,7 @@
       },
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "start": {
       "type": "datetime",

@@ -11,7 +11,7 @@ image:
   pullSecrets:
     - gcr-json-key
 
-nodeEnv: "production"
+nodeEnv: 'production'
 
 replicaCount: 1
 
@@ -51,7 +51,7 @@ resources:
     cpu: 50m
 
 containerPorts:
-  http: "1337"
+  http: '1337'
 
 podSecurityContext:
   enabled: true
@@ -108,13 +108,13 @@ service:
   ports:
     http: 80
   targetPorts:
-    http: "1337"
+    http: '1337'
   nodePorts:
-    http: ""
-    https: ""
+    http: ''
+    https: ''
   sessionAffinity: None
-  clusterIP: ""
-  loadBalancerIP: ""
+  clusterIP: ''
+  loadBalancerIP: ''
   loadBalancerSourceRanges: []
   externalTrafficPolicy: Cluster
   annotations: {}
@@ -122,6 +122,6 @@ service:
 
 serviceAccount:
   create: false
-  name: ""
+  name: ''
   automountServiceAccountToken: true
   annotations: {}

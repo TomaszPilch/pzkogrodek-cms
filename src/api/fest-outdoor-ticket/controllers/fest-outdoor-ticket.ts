@@ -4,4 +4,4 @@
 
 import { factories } from '@strapi/strapi'
 
-export default factories.createCoreController('api::fest-outdoor-ticket.fest-outdoor-ticket');
+export default factories.createCoreController('api::fest-outdoor-ticket.fest-outdoor-ticket')

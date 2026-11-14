@@ -44,7 +44,7 @@ export interface PageYoutube extends Struct.ComponentSchema {
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ComponentSchemas {
       'page.event-detail': PageEventDetail
       'page.gallery': PageGallery

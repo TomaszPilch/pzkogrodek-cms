@@ -1,6 +1,3 @@
-import cs from './cs.json'
-import pl from './pl.json'
-
 export default {
   config: {
     locales: [

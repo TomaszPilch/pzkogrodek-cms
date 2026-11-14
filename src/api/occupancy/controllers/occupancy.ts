@@ -4,4 +4,4 @@
 
 import { factories } from '@strapi/strapi'
 
-export default factories.createCoreController('api::occupancy.occupancy');
+export default factories.createCoreController('api::occupancy.occupancy')

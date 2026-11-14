@@ -85,9 +85,7 @@
       },
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "showAsSnippet": {
       "type": "boolean",
