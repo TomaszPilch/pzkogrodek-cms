@@ -19,6 +19,10 @@ existingSecret: 'pzkogrodek-cms-secret'
 
 existingConfigMap: 'pzkogrodek-cms-config-new'
 
+uploadsPersistence:
+  enabled: true
+  mountPath: /opt/app/public/uploads
+
 # @param affinity - to enable selecting the specific node
 # find better solution in the future, but now we need this to prevent scheduling to different node than PVC
 affinity: {}

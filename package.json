@@ -10,6 +10,8 @@
     "migrate:events": "node scripts/migrate-events.mjs",
     "migrate:pages": "node scripts/migrate-pages.mjs --apply",
     "migrate:timestamps": "node scripts/restore-migration-timestamps.mjs --write",
+    "regenerate:slugs": "node scripts/regenerate-slugs.mjs --apply",
+    "test:slugs": "node --test scripts/regenerate-slugs.test.mjs",
     "test:migration": "node --test scripts/migrate-events.test.mjs scripts/migrate-pages.test.mjs scripts/restore-migration-timestamps.test.mjs",
     "strapi": "strapi"
   },

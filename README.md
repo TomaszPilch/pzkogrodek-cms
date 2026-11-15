@@ -190,6 +190,57 @@ abort the transaction. No content, slugs or media values change.
 Inspect the dates in Strapi after applying. Later edits, publishing or content
 migration reruns can change audit dates again; perform the repair last.
 
+### Regenerate shared slugs (REST API)
+
+This one-time repair covers every content type whose schema has a shared `slug`
+field (currently Events, Pages and Aktywny emeryt). It derives one slug per
+document from its **Polish (`pl`) title/name**, preferring the published Polish
+version and using the Polish draft if unpublished. If Polish is absent, it uses
+the first available locale alphabetically, preferring that locale's published
+version over its draft. Fallbacks are marked in the output. Empty or unusable
+source titles stop the entire repair.
+
+Uses the existing Strapi v5 REST API; **no database access, public PostgreSQL
+host, or CMS deployment is needed**. Supply `STRAPI_V5_API_TOKEN` through the
+process environment, with `find`, `findOne` and `update` permissions for all
+three content types, including draft read access. `STRAPI_V5_URL` defaults to
+`https://cms-new.pzkogrodek.cz`. The command discovers locales through
+`/api/i18n/locales`; allow the i18n `listLocales` action on the API token too.
+No `.env` files are read.
+
+```powershell
+yarn regenerate:slugs
+# Review the preview, back up the database, and pause CMS writes first:
+yarn regenerate:slugs --apply
+```
+
+The default is a read-only preview listing old/new slugs and the source locale.
+Apply reads all collections before writing and sends slug-only updates, **Polish
+first**, for every existing locale of changed documents. It republishes locales
+that already have published versions; draft-only locales remain unpublished.
+**REST updates change timestamps, and republishing publishes pending draft
+content as well as the slug.** The slug is based on the published title read
+before applying, even when the pending draft has a different title.
+
+Duplicate titles receive deterministic numeric suffixes within each content
+type, with Polish-derived slugs allocated before fallback slugs. To handle
+swapped/colliding URLs, documents holding another document's intended slug first
+receive a unique temporary `slug-repair-...` slug. Unchanged documents are not
+rewritten. All locales and publication versions are read back to verify slugs.
+
+This is **not a transaction**. Pause editing and migrations for the whole run.
+An API/plugin error may leave partial updates or temporary public URLs. Inspect
+the reported documents and restore the backup if needed before retrying. A retry
+recalculates slugs from current titles, which may have changed through publishing
+on the previous attempt. The deployed slug plugin must accept explicit slug
+updates (as the repository's configured plugin version does).
+
+This changes public URLs; arrange redirects or update links as needed. It does
+not change future slug generation. Run it after content migrations; subsequent
+CMS edits or migrations may generate slugs again.
+
+Offline repair tests: `yarn test:slugs`.
+
 ### HELM deploy
 
 ```
