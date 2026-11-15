@@ -66,6 +66,7 @@ $RECYCLE.BIN/
 ############################
 
 .tmp
+.migration-state/
 *.log
 *.sql
 *.sqlite

@@ -7,6 +7,10 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
+    "migrate:events": "node scripts/migrate-events.mjs",
+    "migrate:pages": "node scripts/migrate-pages.mjs --apply",
+    "migrate:timestamps": "node scripts/restore-migration-timestamps.mjs --write",
+    "test:migration": "node --test scripts/migrate-events.test.mjs scripts/migrate-pages.test.mjs scripts/restore-migration-timestamps.test.mjs",
     "strapi": "strapi"
   },
   "dependencies": {
@@ -35,6 +39,8 @@
     "eslint-plugin-no-loops": "^0.4.0",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
+    "htmlparser2": "^10.0.0",
+    "markdown-it": "^14.1.1",
     "prettier": "^3.8.3",
     "typescript": "^5",
     "typescript-eslint": "^8.24.0"

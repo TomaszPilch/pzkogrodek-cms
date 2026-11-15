@@ -11,6 +11,10 @@ export default [
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
   {
+    files: ['scripts/**/*.mjs'],
+    languageOptions: { globals: globals.node },
+  },
+  {
     files: ['**/webpack.config*.js'],
     languageOptions: { sourceType: 'commonjs' },
   },
