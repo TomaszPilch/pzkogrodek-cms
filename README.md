@@ -193,7 +193,7 @@ migration reruns can change audit dates again; perform the repair last.
 ### HELM deploy
 
 ```
-helm upgrade pzkogrodek-cms-new -n pzkogrodek devx/strapi-cms -f ./helm/values.yaml --set image.tag=$BITBUCKET_TAG
+helm upgrade pzkogrodek-cms-new -n pzkogrodek devx/strapi-cms -f ./helm/values.yaml --set image.tag=v
 ```
 
 ```

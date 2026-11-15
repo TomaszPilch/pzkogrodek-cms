@@ -38,4 +38,5 @@ COPY --from=build --chown=node:node /opt/app/database ./database
 RUN chown node:node /opt/app
 USER node
 EXPOSE 1337
-CMD ["yarn", "start"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["node", "/opt/node_modules/@strapi/strapi/bin/strapi.js", "start"]
