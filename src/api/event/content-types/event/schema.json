@@ -29,11 +29,11 @@
       "type": "string",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "required": false,
-      "unique": true
+      "unique": false
     },
     "image": {
       "type": "media",
@@ -44,7 +44,9 @@
       },
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "start": {
       "type": "datetime",

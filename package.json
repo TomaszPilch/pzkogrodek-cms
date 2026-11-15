@@ -1,7 +1,7 @@
 {
   "name": "pzkogrodek-cms",
   "private": true,
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
@@ -14,9 +14,10 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.60.0",
-    "@strapi/plugin-users-permissions": "5.60.0",
-    "@strapi/strapi": "5.60.0",
+    "@devx-strapi/strapi-slug-creator": "^1.2.0",
+    "@strapi/plugin-cloud": "5.62.0",
+    "@strapi/plugin-users-permissions": "5.62.0",
+    "@strapi/strapi": "5.62.0",
     "better-sqlite3": "13.0.3",
     "pg": "^8.21.0",
     "react": "18.3.1",
@@ -28,8 +29,8 @@
   "devDependencies": {
     "@eslint/js": "^9.20.0",
     "@types/node": "^24",
-    "@types/react": "^18",
     "@types/ramda": "^0.32.0",
+    "@types/react": "^18",
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^8.24.0",
     "@typescript-eslint/parser": "^8.24.0",
